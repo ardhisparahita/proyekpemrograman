@@ -22,8 +22,12 @@ const Validation = sequelize.define(
 
     validation_time: {
       type: DataTypes.DATE,
-      allowNull: false,
       defaultValue: DataTypes.NOW,
+    },
+
+    notes: {
+      type: DataTypes.TEXT,
+      allowNull: true,
     },
   },
   {
