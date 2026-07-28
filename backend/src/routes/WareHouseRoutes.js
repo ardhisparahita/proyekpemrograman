@@ -1,27 +1,19 @@
 const express = require("express");
 const router = express.Router();
 
-const WarehouseController = require("../controllers/WarehouseController");
-const validateWarehouse = require("../validations/warehouseValidation");
+const WarehouseController = require('../controllers/WarehouseController');
+const validateWarehouse = require('../validations/warehouseValidation');
 
-const verifyToken = require("../middlewares/verifyToken");
-const authorize = require("../middlewares/authorize");
+const auth = require('../middleware/auth');
+const authorize = require('../middleware/authorize');
 
-router.get(
-    "/",
-    verifyToken,
-    WarehouseController.findAll
-);
+router.get("/", auth, WarehouseController.findAll);
 
-router.get(
-    "/:id",
-    verifyToken,
-    WarehouseController.findById
-);
+router.get("/:id", auth, WarehouseController.findById);
 
 router.post(
     "/",
-    verifyToken,
+    auth,
     authorize("ADMIN"),
     validateWarehouse,
     WarehouseController.create
@@ -29,7 +21,7 @@ router.post(
 
 router.put(
     "/:id",
-    verifyToken,
+    auth,
     authorize("ADMIN"),
     validateWarehouse,
     WarehouseController.update
@@ -37,7 +29,7 @@ router.put(
 
 router.delete(
     "/:id",
-    verifyToken,
+    auth,
     authorize("ADMIN"),
     WarehouseController.delete
 );
