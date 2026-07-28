@@ -62,7 +62,7 @@ class ProductController {
         } catch (error) {
 
             if (
-                error.message === "SKU already exists" ||
+                error.message === "already exists" ||
                 error.message === "Price must be greater than 0"
             ) {
                 return res.status(400).json({
@@ -104,7 +104,7 @@ class ProductController {
             }
 
             if (
-                error.message === "SKU already exists" ||
+                error.message === "already exists" ||
                 error.message === "Price must be greater than 0"
             ) {
                 return res.status(400).json({

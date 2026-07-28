@@ -1,4 +1,4 @@
-const ProductRepository = require("../repositories/ProductRepository");
+const ProductRepository = require('../repositories/ProductRepositories');
 
 class ProductService {
 
@@ -17,14 +17,12 @@ class ProductService {
     }
 
     async create(data) {
-        // Cek apakah SKU sudah digunakan
-        const existingProduct = await ProductRepository.findBySku(data.sku);
+        const existingProduct = await ProductRepository.findByProductCode(data.product_code);
 
         if (existingProduct) {
-            throw new Error("SKU already exists");
+            throw new Error("already exists");
         }
 
-        // Validasi harga
         if (data.price <= 0) {
             throw new Error("Price must be greater than 0");
         }
@@ -39,19 +37,17 @@ class ProductService {
             throw new Error("Product not found");
         }
 
-        // Jika SKU diubah, cek apakah sudah digunakan
-        if (data.sku) {
-            const existingProduct = await ProductRepository.findBySku(data.sku);
+        if (data.product_code) {
+            const existingProduct = await ProductRepository.findByProductCode(data.product_code);
 
             if (
                 existingProduct &&
                 existingProduct.id !== Number(id)
             ) {
-                throw new Error("SKU already exists");
+                throw new Error("already exists");
             }
         }
 
-        // Validasi harga jika dikirim
         if (data.price !== undefined && data.price <= 0) {
             throw new Error("Price must be greater than 0");
         }

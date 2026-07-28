@@ -10,13 +10,13 @@ class ProductRepository {
         return await Product.findByPk(id);
     }
 
-    async findBySku(sku) {
-        return await Product.findOne({
-            where: {
-                sku,
-            },
-        });
-    }
+    async findByProductCode(product_code) {
+    return await Product.findOne({
+        where: {
+            product_code,
+        },
+    });
+}
 
     async create(data) {
         return await Product.create(data);

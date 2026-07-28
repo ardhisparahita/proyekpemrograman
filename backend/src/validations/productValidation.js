@@ -2,12 +2,12 @@ const { body, validationResult } = require("express-validator");
 
 const validateProduct = [
 
-    body("sku")
+    body("product_code")
         .trim()
         .notEmpty()
-        .withMessage("SKU is required")
+        .withMessage("product code is required")
         .isLength({ min: 3, max: 50 })
-        .withMessage("SKU must be between 3 and 50 characters"),
+        .withMessage("product must be between 3 and 50 characters"),
 
     body("product_name")
         .trim()

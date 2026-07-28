@@ -4,8 +4,8 @@ const router = express.Router();
 const ProductController = require('../controllers/ProductController');
 const validateProduct = require('../validations/productValidation');
 
-const auth = require("../middlewares/auth");
-const authorize = require("../middlewares/authorize");
+const auth = require('../middleware/auth');
+const authorize = require('../middleware/authorize');
 
 router.get(
     "/",
