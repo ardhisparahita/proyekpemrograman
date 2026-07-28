@@ -3,34 +3,60 @@ const { Inventory, Warehouse, Product } = require("../models");
 class InventoryRepository {
 
     async findAll() {
-        return await Inventory.findAll({
-            include: [
-                {
-                    model: Warehouse,
-                    attributes: ["id", "warehouse_name", "location"],
-                },
-                {
-                    model: Product,
-                    attributes: ["id", "product_code", "product_name", "barcode", "unit"],
-                },
-            ],
-        });
-    }
+    return await Inventory.findAll({
+        include: [
+            {
+                model: Warehouse,
+                as: "warehouse",
+                attributes: [
+                    "id",
+                    "warehouse_name",
+                    "address",
+                    "city",
+                ],
+            },
+            {
+                model: Product,
+                as: "product",
+                attributes: [
+                    "id",
+                    "product_code",
+                    "product_name",
+                    "barcode",
+                    "unit",
+                ],
+            },
+        ],
+    });
+}
 
-    async findById(id) {
-        return await Inventory.findByPk(id, {
-            include: [
-                {
-                    model: Warehouse,
-                    attributes: ["id", "warehouse_name", "location"],
-                },
-                {
-                    model: Product,
-                    attributes: ["id", "product_code", "product_name", "barcode", "unit"],
-                },
-            ],
-        });
-    }
+  async findById(id) {
+    return await Inventory.findByPk(id, {
+        include: [
+            {
+                model: Warehouse,
+                as: "warehouse",
+                attributes: [
+                    "id",
+                    "warehouse_name",
+                    "address",
+                    "city",
+                ],
+            },
+            {
+                model: Product,
+                as: "product",
+                attributes: [
+                    "id",
+                    "product_code",
+                    "product_name",
+                    "barcode",
+                    "unit",
+                ],
+            },
+        ],
+    });
+}
 
     async findByWarehouseAndProduct(warehouse_id, product_id) {
         return await Inventory.findOne({
