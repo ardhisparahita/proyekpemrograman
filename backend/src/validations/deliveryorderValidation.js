@@ -34,6 +34,20 @@ const validateDeliveryOrder = [
         .withMessage("Quantity is required")
         .isInt({ min: 1 })
         .withMessage("Quantity must be greater than 0"),
+      
+    body("do_number")
+    .notEmpty()
+    .withMessage("DO Number is required"),
+
+body("destination")
+    .notEmpty()
+    .withMessage("Destination is required"),
+
+body("delivery_date")
+    .notEmpty()
+    .withMessage("Delivery date is required")
+    .isISO8601()
+    .withMessage("Delivery date must be a valid date"),
 
     (req, res, next) => {
 

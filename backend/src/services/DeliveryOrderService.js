@@ -28,7 +28,6 @@ class DeliveryOrderService {
 
         try {
 
-            // Cek Warehouse
             const warehouse =
                 await WarehouseRepository.findById(
                     data.warehouse_id
@@ -38,7 +37,6 @@ class DeliveryOrderService {
                 throw new Error("Warehouse not found");
             }
 
-            // Cek Driver
             const driver =
                 await UserRepository.findById(
                     data.driver_id
@@ -52,20 +50,20 @@ class DeliveryOrderService {
                 throw new Error("Selected user is not a driver");
             }
 
-            // Buat Delivery Order
             const deliveryOrder =
-                await DeliveryOrderRepository.create(
-                    {
-                        admin_id: adminId,
-                        driver_id: data.driver_id,
-                        warehouse_id: data.warehouse_id,
-                        status: "PENDING",
-                        notes: data.notes,
-                    },
-                    transaction
-                );
+    await DeliveryOrderRepository.create(
+        {
+            do_number: data.do_number,
+            warehouse_id: data.warehouse_id,
+            admin_id: adminId,
+            driver_id: data.driver_id,
+            destination: data.destination,
+            delivery_date: data.delivery_date,
+            status: "PENDING",
+        },
+        transaction
+    );
 
-            // Loop Item
             for (const item of data.items) {
 
                 const inventory =
@@ -93,13 +91,13 @@ class DeliveryOrderService {
                 });
 
                 await DeliveryOrderRepository.createItem(
-                    {
-                        delivery_order_id: deliveryOrder.id,
-                        product_id: item.product_id,
-                        quantity: item.quantity,
-                    },
-                    transaction
-                );
+    {
+        delivery_order_id: deliveryOrder.id,
+        product_id: item.product_id,
+        qty: item.quantity,
+    },
+    transaction
+);
             }
 
             await transaction.commit();

@@ -30,6 +30,11 @@ const DeliveryOrder = sequelize.define(
       allowNull: false,
     },
 
+warehouse_id: {
+  type: DataTypes.BIGINT,
+  allowNull: false,
+},
+
     status: {
       type: DataTypes.ENUM(
         "PENDING",
@@ -42,8 +47,11 @@ const DeliveryOrder = sequelize.define(
     },
   },
   {
-    timestamps: false,
-  }
+    timestamps: true,
+    createdAt: "created_at",
+    updatedAt: "updated_at",
+},
+
 );
 
 module.exports = DeliveryOrder;

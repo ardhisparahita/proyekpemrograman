@@ -38,7 +38,7 @@ class DeliveryOrderRepository {
                     ],
                 },
             ],
-            order: [["createdAt", "DESC"]],
+            order: [["id", "DESC"]],
         });
     }
 
