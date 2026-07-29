@@ -88,13 +88,20 @@ class DeliveryOrderRepository {
         });
     }
 
-    async update(id, data) {
-        const deliveryOrder = await DeliveryOrder.findByPk(id);
+    async update(id, data, transaction = null) {
 
-        await deliveryOrder.update(data);
+    const deliveryOrder = await DeliveryOrder.findByPk(id);
 
-        return deliveryOrder;
+    if (!deliveryOrder) {
+        return null;
     }
+
+    await deliveryOrder.update(data, {
+        transaction,
+    });
+
+    return deliveryOrder;
+}
 
     async delete(id) {
         const deliveryOrder = await DeliveryOrder.findByPk(id);

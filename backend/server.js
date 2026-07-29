@@ -13,6 +13,8 @@ const deliveryRoutes = require('./src/routes/DeliveryRoutes');
 const warehouseRoutes = require('./src/routes/WareHouseRoutes');
 const productRoutes = require('./src/routes/ProductRoutes');
 const deliveryOrderRoutes = require('./src/routes/DeliveryOrderRoutes');
+const validationRoutes = require('./src/routes/ValidationRoutes');
+
 
 app.use('/api/auth', authRoutes);
 app.use('/api/inventories', inventoryRoutes);
@@ -20,6 +22,7 @@ app.use('/api/delivery', deliveryRoutes);
 app.use("/api/warehouses", warehouseRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/delivery-orders', deliveryOrderRoutes);
+app.use('/api/validations', validationRoutes);
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');
