@@ -15,6 +15,7 @@ const productRoutes = require('./src/routes/ProductRoutes');
 const deliveryOrderRoutes = require('./src/routes/DeliveryOrderRoutes');
 const validationRoutes = require('./src/routes/ValidationRoutes');
 const proofOfDeliveryRoutes = require('./src/routes/ProofOfDeliveryRoutes');
+const vehicleTrackingRoutes = require("./src/routes/VehicleTrackingRoutes");
 
 
 app.use('/api/auth', authRoutes);
@@ -25,6 +26,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/delivery-orders', deliveryOrderRoutes);
 app.use('/api/validations', validationRoutes);
 app.use('/api/proof-of-deliveries', proofOfDeliveryRoutes);
+app.use('/api/vehicle-trackings', vehicleTrackingRoutes);
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');
