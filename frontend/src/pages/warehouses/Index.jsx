@@ -56,6 +56,35 @@ const [selectedWarehouse, setSelectedWarehouse] =
     }
 };
 
+const handleDelete = async (id) => {
+    const confirmed = window.confirm(
+        "Apakah Anda yakin ingin menghapus warehouse ini?"
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    try {
+        setLoading(true);
+
+        await warehouseService.delete(id);
+
+        await fetchWarehouses();
+
+        alert("Warehouse berhasil dihapus.");
+    } catch (error) {
+        console.error(error);
+
+        alert(
+            error.response?.data?.message ??
+            "Gagal menghapus warehouse."
+        );
+    } finally {
+        setLoading(false);
+    }
+};
+
     const [openModal, setOpenModal] = useState(false);
 
     
@@ -176,9 +205,12 @@ const [selectedWarehouse, setSelectedWarehouse] =
     Edit
 </Button>
 
-                                        <Button className="bg-red-500 hover:bg-red-600">
-                                            Delete
-                                        </Button>
+                                        <Button
+    className="bg-red-500 hover:bg-red-600"
+    onClick={() => handleDelete(warehouse.id)}
+>
+    Delete
+</Button>
 
                                     </td>
 
