@@ -1,5 +1,8 @@
-import { login as loginApi } from "../api/authApi";
 import { saveToken, removeToken } from "../utils/token";
+import {
+    login as loginApi,
+    getDrivers,
+} from "../api/authApi";
 
 const authService = {
     async login(data) {
@@ -13,6 +16,13 @@ const authService = {
     logout() {
         removeToken();
     },
+
+    async getDrivers() {
+    const response = await getDrivers();
+
+    return response.data;
+},
+    
 };
 
 export default authService;
