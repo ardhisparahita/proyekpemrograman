@@ -6,9 +6,7 @@ import Dashboard from "../pages/dashboard/Dashboard";
 function AppRoutes() {
     return (
         <BrowserRouter>
-
             <Routes>
-
                 <Route
                     path="/"
                     element={<Login />}
@@ -18,9 +16,7 @@ function AppRoutes() {
                     path="/dashboard"
                     element={<Dashboard />}
                 />
-
             </Routes>
-
         </BrowserRouter>
     );
 }
