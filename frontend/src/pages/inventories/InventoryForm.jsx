@@ -45,27 +45,27 @@ export default function InventoryForm({
     }, []);
 
     useEffect(() => {
-        if (initialData) {
-            setForm({
-                warehouse_id:
-                    initialData.warehouse_id ?? "",
-
-                product_id:
-                    initialData.product_id ?? "",
-
-                stock:
-                    initialData.stock ?? "",
-            });
-
-            return;
-        }
-
+    if (initialData) {
         setForm({
-            warehouse_id: "",
-            product_id: "",
-            stock: "",
+            warehouse_id:
+                initialData.warehouse_id ?? "",
+
+            product_id:
+                initialData.product_id ?? "",
+
+            stock:
+                initialData.stock ?? "",
         });
-    }, [initialData]);
+
+        return;
+    }
+
+    setForm({
+        warehouse_id: "",
+        product_id: "",
+        stock: "",
+    });
+}, [initialData]);
 
     const handleChange = (event) => {
         setForm((prev) => ({

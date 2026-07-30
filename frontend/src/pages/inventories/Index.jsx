@@ -67,7 +67,7 @@ export default function InventoryPage() {
 
         alert(
             error.response?.data?.message ??
-                "Gagal menyimpan inventory."
+            "Gagal menyimpan inventory."
         );
     } finally {
         setSubmitLoading(false);
@@ -165,17 +165,14 @@ export default function InventoryPage() {
                                 <td className="space-x-2 px-4 py-3">
 
                                     <Button
-                                        className="bg-yellow-500 hover:bg-yellow-600"
-                                        onClick={() => {
-                                            setSelectedInventory(
-                                                inventory
-                                            );
-
-                                            setOpenModal(true);
-                                        }}
-                                    >
-                                        Edit
-                                    </Button>
+    className="bg-yellow-500 hover:bg-yellow-600"
+    onClick={() => {
+        setSelectedInventory(inventory);
+        setOpenModal(true);
+    }}
+>
+    Edit
+</Button>
 
                                     <Button
                                         className="bg-red-500 hover:bg-red-600"
