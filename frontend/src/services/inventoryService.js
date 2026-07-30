@@ -18,9 +18,10 @@ const inventoryService = {
     },
 
     async create(data) {
-        const response = await createInventory(data);
-        return response.data;
-    },
+    const response = await createInventory(data);
+
+    return response.data;
+},
 
     async update(id, data) {
         const response = await updateInventory(id, data);

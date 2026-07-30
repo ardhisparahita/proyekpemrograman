@@ -75,14 +75,14 @@ export default function InventoryForm({
     };
 
     const handleSubmit = (event) => {
-        event.preventDefault();
+    event.preventDefault();
 
-        onSubmit({
-            warehouse_id: Number(form.warehouse_id),
-            product_id: Number(form.product_id),
-            stock: Number(form.stock),
-        });
-    };
+    onSubmit({
+        warehouse_id: Number(form.warehouse_id),
+        product_id: Number(form.product_id),
+        stock: Number(form.stock),
+    });
+};
 
     return (
         <form

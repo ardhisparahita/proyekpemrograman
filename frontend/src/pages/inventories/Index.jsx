@@ -16,7 +16,7 @@ export default function InventoryPage() {
 
     const [loading, setLoading] = useState(true);
 
-    const [submitLoading] = useState(false);
+    const [submitLoading, setSubmitLoading] = useState(false);
 
     const [openModal, setOpenModal] = useState(false);
 
@@ -44,9 +44,35 @@ export default function InventoryPage() {
         void fetchInventories();
     }, [fetchInventories]);
 
-    const handleSubmit = async () => {
-        // akan dibuat di bagian berikutnya
-    };
+    const handleSubmit = async (data) => {
+    try {
+        setSubmitLoading(true);
+
+        if (selectedInventory) {
+            await inventoryService.update(
+                selectedInventory.id,
+                data
+            );
+        } else {
+            await inventoryService.create(data);
+        }
+
+        setOpenModal(false);
+
+        setSelectedInventory(null);
+
+        await fetchInventories();
+    } catch (error) {
+        console.error(error);
+
+        alert(
+            error.response?.data?.message ??
+                "Gagal menyimpan inventory."
+        );
+    } finally {
+        setSubmitLoading(false);
+    }
+};
 
     const handleDelete = async () => {
         // akan dibuat di bagian berikutnya
