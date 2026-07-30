@@ -74,9 +74,30 @@ export default function InventoryPage() {
     }
 };
 
-    const handleDelete = async () => {
-        // akan dibuat di bagian berikutnya
-    };
+    const handleDelete = async (id) => {
+    const confirmed = window.confirm(
+        "Apakah Anda yakin ingin menghapus inventory ini?"
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    try {
+        await inventoryService.delete(id);
+
+        await fetchInventories();
+
+        alert("Inventory berhasil dihapus.");
+    } catch (error) {
+        console.error(error);
+
+        alert(
+            error.response?.data?.message ??
+            "Gagal menghapus inventory."
+        );
+    }
+};
 
     return (
         <DashboardLayout>
@@ -175,15 +196,11 @@ export default function InventoryPage() {
 </Button>
 
                                     <Button
-                                        className="bg-red-500 hover:bg-red-600"
-                                        onClick={() =>
-                                            handleDelete(
-                                                inventory.id
-                                            )
-                                        }
-                                    >
-                                        Delete
-                                    </Button>
+    className="bg-red-500 hover:bg-red-600"
+    onClick={() => handleDelete(inventory.id)}
+>
+    Delete
+</Button>
 
                                 </td>
 
