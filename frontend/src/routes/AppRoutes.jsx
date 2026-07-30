@@ -6,6 +6,7 @@ import Forbidden from "../pages/Forbidden";
 
 import ProtectedRoute from "./ProtectedRoute";
 import RoleRoute from "./RoleRoute";
+
 import WarehousePage from "../pages/warehouses/Index";
 import ProductPage from "../pages/products/Index";
 import InventoryPage from "../pages/inventories/Index";
@@ -21,7 +22,7 @@ export default function AppRoutes() {
         <BrowserRouter>
             <Routes>
 
-                {/* Public Routes */}
+                {/* Public */}
                 <Route
                     path="/"
                     element={<Login />}
@@ -32,16 +33,15 @@ export default function AppRoutes() {
                     element={<Forbidden />}
                 />
 
-                {/* Protected Routes */}
+                {/* Protected */}
                 <Route element={<ProtectedRoute />}>
 
-                    {/* Dashboard */}
                     <Route
                         path="/dashboard"
                         element={<Dashboard />}
                     />
 
-                    {/* Admin Only */}
+                    {/* ADMIN */}
                     <Route
                         element={
                             <RoleRoute
@@ -49,14 +49,55 @@ export default function AppRoutes() {
                             />
                         }
                     >
-                        {/* Nanti halaman Users */}
-                        {/* <Route path="/users" element={<Users />} /> */}
 
-                        {/* Nanti Warehouse */}
-                        {/* <Route path="/warehouses" element={<Warehouse />} /> */}
+
+                        <Route
+                            path="/warehouses"
+                            element={<WarehousePage />}
+                        />
+
+                        <Route
+                            path="/products"
+                            element={<ProductPage />}
+                        />
+
+                        <Route
+                            path="/inventories"
+                            element={<InventoryPage />}
+                        />
+
+                        <Route
+                            path="/delivery-orders"
+                            element={<DeliveryOrderPage />}
+                        />
+
+                        <Route
+                            path="/validations"
+                            element={<ValidationPage />}
+                        />
+
+                        <Route
+                            path="/proof-of-deliveries"
+                            element={<ProofOfDeliveryPage />}
+                        />
+
+                        <Route
+                            path="/vehicle-trackings"
+                            element={<VehicleTrackingPage />}
+                        />
+
+                        <Route
+                            path="/daily-reports"
+                            element={<DailyReportPage />}
+                        />
+
+                        <Route
+                            path="/audit-logs"
+                            element={<AuditLogPage />}
+                        />
                     </Route>
 
-                    {/* Owner Only */}
+                    {/* OWNER */}
                     <Route
                         element={
                             <RoleRoute
@@ -64,10 +105,10 @@ export default function AppRoutes() {
                             />
                         }
                     >
-                        {/* Daily Report */}
+                        {/* Owner Routes */}
                     </Route>
 
-                    {/* Warehouse */}
+                    {/* WAREHOUSE */}
                     <Route
                         element={
                             <RoleRoute
@@ -75,10 +116,10 @@ export default function AppRoutes() {
                             />
                         }
                     >
-                        {/* Inventory */}
+                        {/* Warehouse Routes */}
                     </Route>
 
-                    {/* Driver */}
+                    {/* DRIVER */}
                     <Route
                         element={
                             <RoleRoute
@@ -86,7 +127,7 @@ export default function AppRoutes() {
                             />
                         }
                     >
-                        {/* Delivery */}
+                        {/* Driver Routes */}
                     </Route>
 
                 </Route>
@@ -100,24 +141,6 @@ export default function AppRoutes() {
                         </div>
                     }
                 />
-
-                <Route path="/warehouses" element={<WarehousePage />} />
-
-<Route path="/products" element={<ProductPage />} />
-
-<Route path="/inventories" element={<InventoryPage />} />
-
-<Route path="/delivery-orders" element={<DeliveryOrderPage />} />
-
-<Route path="/validations" element={<ValidationPage />} />
-
-<Route path="/proof-of-deliveries" element={<ProofOfDeliveryPage />} />
-
-<Route path="/vehicle-trackings" element={<VehicleTrackingPage />} />
-
-<Route path="/daily-reports" element={<DailyReportPage />} />
-
-<Route path="/audit-logs" element={<AuditLogPage />} />
 
             </Routes>
         </BrowserRouter>

@@ -6,10 +6,6 @@ const menus = [
         path: "/dashboard",
     },
     {
-        title: "User",
-        path: "/users",
-    },
-    {
         title: "Warehouse",
         path: "/warehouses",
     },

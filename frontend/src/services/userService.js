@@ -1,27 +1,36 @@
-import * as userApi from "../api/userApi";
+import {
+    getUsers,
+    getUser,
+    createUser,
+    updateUser,
+    deleteUser,
+} from "../api/userApi";
 
 const userService = {
-
-    getAll() {
-        return userApi.getUsers();
+    async getAll() {
+        const response = await getUsers();
+        return response.data;
     },
 
-    getById(id) {
-        return userApi.getUser(id);
+    async getById(id) {
+        const response = await getUser(id);
+        return response.data;
     },
 
-    create(data) {
-        return userApi.createUser(data);
+    async create(data) {
+        const response = await createUser(data);
+        return response.data;
     },
 
-    update(id, data) {
-        return userApi.updateUser(id, data);
+    async update(id, data) {
+        const response = await updateUser(id, data);
+        return response.data;
     },
 
-    delete(id) {
-        return userApi.deleteUser(id);
+    async delete(id) {
+        const response = await deleteUser(id);
+        return response.data;
     },
-
 };
 
 export default userService;
