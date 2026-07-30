@@ -6,6 +6,15 @@ import Forbidden from "../pages/Forbidden";
 
 import ProtectedRoute from "./ProtectedRoute";
 import RoleRoute from "./RoleRoute";
+import WarehousePage from "../pages/warehouses/Index";
+import ProductPage from "../pages/products/Index";
+import InventoryPage from "../pages/inventories/Index";
+import DeliveryOrderPage from "../pages/delivery-orders/Index";
+import ValidationPage from "../pages/validations/Index";
+import ProofOfDeliveryPage from "../pages/proof-of-deliveries/Index";
+import VehicleTrackingPage from "../pages/vehicle-trackings/Index";
+import DailyReportPage from "../pages/daily-reports/Index";
+import AuditLogPage from "../pages/audit-logs/Index";
 
 export default function AppRoutes() {
     return (
@@ -91,6 +100,24 @@ export default function AppRoutes() {
                         </div>
                     }
                 />
+
+                <Route path="/warehouses" element={<WarehousePage />} />
+
+<Route path="/products" element={<ProductPage />} />
+
+<Route path="/inventories" element={<InventoryPage />} />
+
+<Route path="/delivery-orders" element={<DeliveryOrderPage />} />
+
+<Route path="/validations" element={<ValidationPage />} />
+
+<Route path="/proof-of-deliveries" element={<ProofOfDeliveryPage />} />
+
+<Route path="/vehicle-trackings" element={<VehicleTrackingPage />} />
+
+<Route path="/daily-reports" element={<DailyReportPage />} />
+
+<Route path="/audit-logs" element={<AuditLogPage />} />
 
             </Routes>
         </BrowserRouter>
