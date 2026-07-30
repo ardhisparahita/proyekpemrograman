@@ -173,16 +173,16 @@ export default function InventoryPage() {
                 </Table>
             )}
 
-            <InventoryModal
-                open={openModal}
-                onClose={() => {
-                    setOpenModal(false);
-                    setSelectedInventory(null);
-                }}
-                loading={submitLoading}
-                initialData={selectedInventory}
-                onSubmit={handleSubmit}
-            />
+           <InventoryModal
+    open={openModal}
+    onClose={() => {
+        setOpenModal(false);
+        setSelectedInventory(null);
+    }}
+    loading={submitLoading}
+    initialData={selectedInventory}
+    onSubmit={handleSubmit}
+/>
 
         </DashboardLayout>
     );
