@@ -1,3 +1,4 @@
+require("dotenv").config({ path: require("path").resolve(__dirname, "../../.env") });
 const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize(
@@ -14,6 +15,7 @@ const sequelize = new Sequelize(
         rejectUnauthorized: true,
       },
     },
+    logging: false,
   }
 );
 
