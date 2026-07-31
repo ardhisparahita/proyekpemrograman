@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import AuthContext from "./authContext";
+import AuthContext from "./AuthContext";
 import authService from "../services/authService";
 import { getToken } from "../utils/token";
 
