@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const UserRepository = require('../repositories/UserRepository');
 
 exports.register = async (req, res) => {
     try {
@@ -72,4 +73,23 @@ exports.login = async (req, res) => {
   } catch (error) {
     res.status(500).json(error);
   }
+};
+
+exports.getDrivers = async (req, res) => {
+    try {
+        const drivers = await UserRepository.findDrivers();
+
+        return res.json({
+            success: true,
+            message: "Drivers retrieved successfully",
+            data: drivers,
+        });
+    } catch (error) {
+        console.error(error);
+
+        return res.status(500).json({
+            success: false,
+            message: error.message,
+        });
+    }
 };

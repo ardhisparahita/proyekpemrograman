@@ -18,6 +18,23 @@ class UserRepository {
         });
     }
 
+    async findDrivers() {
+    return await User.findAll({
+        where: {
+            role: "DRIVER",
+        },
+        attributes: [
+            "id",
+            "name",
+            "email",
+            "phone",
+        ],
+        order: [
+            ["name", "ASC"],
+        ],
+    });
+}
+
     async create(data) {
         return await User.create(data);
     }
